@@ -1,0 +1,1 @@
+console.log('Vendor.js: Include vendor dependencies here. (Bootstrap, jQuery etc.)')
