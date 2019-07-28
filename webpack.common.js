@@ -1,8 +1,8 @@
 module.exports = {
   //Gonna change entry points later.
   entry: {
-    app: "./src/app.js",
-    vendor: "./src/vendor.js",
+    app: "./src/app.js",  // Your App Logic.
+    vendor: "./src/vendor.js",  // 3rd Party NPM packages.
   },
   
   module: {
