@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   //Gonna change entry points later.
   entry: {
@@ -19,7 +21,7 @@ module.exports = {
 
       // SOLUTION: For handling required assests. 
       {
-        test:  /\.(svg|png|jpe?g|gif)$/,
+        test:  /\.(eot|woff|ttf|svg|png|jpe?g|gif)$/,
         use: {
           loader: "file-loader",
           options: {
