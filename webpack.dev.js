@@ -1,3 +1,5 @@
+const webpack = require("webpack");
+const autoprefixer = require("autoprefixer");
 const common = require("./webpack.common");
 const merge = require("webpack-merge");
 const path = require("path");
@@ -17,6 +19,16 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({ 
       template: "./src/index.pug" // Initial Template
     }),
+    
+    //Modifies original CSS.
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        // Adds browser prefixes.
+        postcss: [
+          autoprefixer({grid: true})
+        ]
+      }
+    })
   ],
 
   module: {
@@ -27,6 +39,7 @@ module.exports = merge(common, {
         use: [             //The order is important.
           "style-loader",  //  2) injects CSS into the DOM
           "css-loader",    //  1) takes CSS and turns it into JS
+          "postcss-loader" //  0) Modifies the final CSS
         ]
       },
       
@@ -34,9 +47,10 @@ module.exports = merge(common, {
       {
         test: /\.(scss|sass)$/,
         use: [
-          "style-loader", // 3) creates style nodes from JS strings
-          "css-loader",   // 2) translates CSS into CommonJS
-          "sass-loader"   // 1) compiles Sass to CSS, using Node Sass by default
+          "style-loader", // 4) creates style nodes from JS strings
+          "css-loader",   // 3) translates CSS into CommonJS
+          "postcss-loader", //  2) Modifies the final CSS
+          "sass-loader",   // 1) compiles Sass to CSS, using Node Sass by default
         ]
       },
     ]

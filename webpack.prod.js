@@ -1,3 +1,5 @@
+const webpack = require("webpack");
+const autoprefixer = require("autoprefixer");
 const common = require("./webpack.common");
 const merge = require("webpack-merge");
 const path = require("path");
@@ -32,8 +34,15 @@ module.exports = merge(common, {
         collapseWhitespace: true,
         removeComments: true,
       },
-
     }),
+
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          autoprefixer({grid: true})
+        ]
+      }
+    })
   ],
 
   optimization: {
@@ -48,9 +57,10 @@ module.exports = merge(common, {
       //CSS
       {
         test: /\.css$/,
-        use: [                          //The order is important.
+        use: [                          //  The order is important.
           MiniCssExtractPlugin.loader,  //  2) extracts the CSS into a seperate file
           "css-loader",                 //  1) takes CSS and turns it into JS
+          "postcss-loader",             //  0) Modifies the final CSS
         ]
       },
       
@@ -58,9 +68,10 @@ module.exports = merge(common, {
       {
         test: /\.(scss|sass)$/,
         use: [
-          MiniCssExtractPlugin.loader,  // 3) extracts the CSS into a seperate file
-          "css-loader",                 // 2) translates CSS into CommonJS
-          "sass-loader"                 // 1) compiles Sass to CSS, using Node Sass by default
+          MiniCssExtractPlugin.loader,  // 4) extracts the CSS into a seperate file
+          "css-loader",                 // 3) translates CSS into CommonJS
+          "postcss-loader",             // 2) Modifies the final CSS
+          "sass-loader",                 // 1) compiles Sass to CSS, using Node Sass by default
         ]
       },
     ]
