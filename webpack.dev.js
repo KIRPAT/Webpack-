@@ -32,7 +32,7 @@ module.exports = merge(common, {
       
       //SASS
       {
-        test: /\.sass$/,
+        test: /\.(scss|sass)$/,
         use: [
           "style-loader", // 3) creates style nodes from JS strings
           "css-loader",   // 2) translates CSS into CommonJS
