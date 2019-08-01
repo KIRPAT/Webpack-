@@ -12,7 +12,6 @@ I have configured a webpack setup for one of my dev scenarios.
 
 ## Future Plans
 ---
-* Ditching relative path and using absolute path for src folder. No more "../../../" etc.
 * Adding static web site generating features.
   * Adding support for basic folder based routing.
     * Exporting multiple HTML-CSS-JS in one go.
