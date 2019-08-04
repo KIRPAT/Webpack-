@@ -21,7 +21,7 @@ Not opinionated **tyni** static web site generator.
   * Exports multiple HTML files according to "routes.js". 
 
 * **Absolute Paths**
-  * Relative paths are aweful! **"../../myJsJile.js"** is not a good way to import things. Use absolute paths like "pages/" and "scripts/" instead. The full list is in the webpack.common.js file. They even work on SASS/SCSS files and Pug templates.  
+  * Relative paths are aweful! **"../../myJsFile.js"** is not a good way to import things. Use absolute paths like "pages/" and "scripts/" instead. The full list is in the webpack.common.js file. They even work on SASS/SCSS files and Pug templates.  
 
 * **CSS - SASS (.scss & .sass)**
   * Local-fonts: You need to write a @font-face for your fonts.
