@@ -14,14 +14,11 @@ module.exports = {
     } 
   },
 
-  //Gonna change entry points later. 
-  //For now, every project is a one page.
-  //In the future it will be one project with folder routing. 
   entry: routes.entryPoints,
   
   module: {
     rules: [       
-      // 1)Require assets in the JS, 
+      // 1)Require the asset in the JS file, 
       // 2) ERROR! (JS doesn't know how to handle pictures.)
       // 3)Injected them in the HTML.
       {
@@ -40,6 +37,15 @@ module.exports = {
             name: "[name].[hash].[ext]",
             outputPath: "assets"
           }
+        }
+      },
+
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+            presets: ['@babel/preset-env']
         }
       },
 
