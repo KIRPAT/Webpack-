@@ -15,9 +15,9 @@ Not opinionated **tyni** static web site generator.
     ```
 * **You have routing.**
   * Take a look at the "routes.js". It is easy to understand.
-  * ***Note:*** You spessifically need to register a pug template and entry point in the router.js. This proccess can be tedious. I will look into folder based routing. (Just like Next and Nuxt apps.)   
-  * Exports multiple CSS-JS files for each "entry point".
-    * ***Note:*** Always in the root directory *for some reason.* I want it to export CSS files right next to html folder. Even if it is in a sub folder. I will look into it in the future. 
+  * ***Note:*** You specifically need to register a pug template and entry point in the router.js. This process can be tedious. I will look into folder based routing in the future. (Just like Next and Nuxt apps.)   
+  * Exports multiple JS, CSS and HTML files.
+    * ***Note:*** CSS files are always being exported in the root ("dist") directory. I want it to export CSS files to the html's direcory. 
   * Exports multiple HTML files according to "routes.js". 
 
 * **Absolute Paths**
