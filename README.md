@@ -44,7 +44,7 @@ npm i
 
 **Development Server:** Default port is 8080. (Go to "localhost:8080" on the browser.)
 ```
-npm i
+npm run dev-server
 ```
 
 **Production Build:** JS, CSS and used asset file names are hashed for browser cache busting. JS and CSS files are minified. Exports into the "dist" folder.
