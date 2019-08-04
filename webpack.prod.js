@@ -7,12 +7,20 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const routes = require('./routes')
+//ToDo:
+//Decouple the object in the marge function.
+//Concat paths into an array, according to the interiors of "routes" folder.
+//Place it in the "plugins" array.
+//Then concat the new objects in 
+
+
 
 module.exports = merge(common, {
   mode: "production",
   //devtool: "none",
-  
+  devtool: 'source-map',
   //Outputs the production build into "dist" folder
   output: {
     filename: "[name].bundle.[contentHash].js", // Content Hash prevents the browser from using the wrong js file from the cache.
@@ -24,17 +32,12 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contentHash].css",
+      chunkFilename: "[id].[contenthash].css"
     }),
     
     //Exports an HTML in the dist.
-    new HtmlWebpackPlugin({ 
-      template: "./src/index.pug", // Initial Template
-      minify: {
-        removeAttributeQuotes: true,
-        collapseWhitespace: true,
-        removeComments: true,
-      },
-    }),
+    ...routes.buildTemplates,
+
 
     new webpack.LoaderOptionsPlugin({
       options: {

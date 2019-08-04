@@ -3,7 +3,8 @@ const autoprefixer = require("autoprefixer");
 const common = require("./webpack.common");
 const merge = require("webpack-merge");
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const routes = require('./routes')
 
 module.exports = merge(common, {
   mode: "development",
@@ -15,11 +16,9 @@ module.exports = merge(common, {
   },
 
   plugins: [
-    //Exports an HTML in div.
-    new HtmlWebpackPlugin({ 
-      template: "./src/index.pug" // Initial Template
-    }),
-    
+    //Exports an HTML.
+    ...routes.devTemplates,
+
     //Modifies original CSS.
     new webpack.LoaderOptionsPlugin({
       options: {

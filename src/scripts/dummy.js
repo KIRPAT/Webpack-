@@ -1,1 +1,0 @@
-console.log('dummy.js: This script has been imported with an absolute path.')

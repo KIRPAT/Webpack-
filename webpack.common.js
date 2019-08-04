@@ -1,5 +1,7 @@
 const path = require('path')
+const routes = require('./routes')
 
+ 
 module.exports = {
   // Path aliases for clearer path finding. 
   resolve: {
@@ -8,16 +10,14 @@ module.exports = {
       style: path.resolve(__dirname, 'src/style'),
       pug: path.resolve(__dirname, 'src/pug'),
       assets: path.resolve(__dirname, 'src/assets'),
+      pages: path.resolve(__dirname, 'src/pages')
     } 
   },
 
   //Gonna change entry points later. 
   //For now, every project is a one page.
   //In the future it will be one project with folder routing. 
-  entry: {
-    app: "./src/app.js",  // Your App Logic.
-    vendor: "./src/vendor.js",  // 3rd Party NPM packages.
-  },
+  entry: routes.entryPoints,
   
   module: {
     rules: [       
@@ -45,9 +45,12 @@ module.exports = {
 
       { 
         test: /\.pug$/,
-        use: [
-          "pug-loader"
-        ]
+        use: {
+          loader: "pug-loader",
+          options: {
+            root: path.resolve(__dirname, 'src/components')
+          }
+        }
       },
    ]
   },
