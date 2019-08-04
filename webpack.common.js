@@ -3,7 +3,7 @@ const routes = require('./routes')
 
  
 module.exports = {
-  // Path aliases for clearer path finding. 
+  // Absolute Paths. 
   resolve: {
     alias:{
       scripts: path.resolve(__dirname, 'src/scripts'),
